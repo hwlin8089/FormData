@@ -1,5 +1,5 @@
 {
-  "name"          : "form-data",
+  "name"          : "formdata",
   "description"   : "HTML5 FileAPI `FormData` for Node.JS.",
   "url"           : "http://github.com/coolaj86/node-file-api/",
   "keywords"      : ["html5", "jsdom", "file-api", "FormData"],
