@@ -11,7 +11,7 @@
   require('bufferjs');
 
   var EventEmitter = require('events').EventEmitter
-    , forEachAsync = require('forEachAsync')
+    , forEachAsync = require('foreachasync').forEachAsync
     , File = require('File')
     , FileReader = require('FileReader')
     ;
@@ -110,20 +110,19 @@
       });
 
       forEachAsync(Object.keys(fields), function (next, key) {
-        forEachAsync(fields[key], function (next, item) {
+        forEachAsync(fields[key], function (next2, item) {
           var stream = toContentDisposition(key, item);
           stream.on('data', function (data) {
             emitter.emit('data', data);
           });
-          stream.on('end', next);
+          stream.on('end', next2);
         })
         .then(next);
       })
-      .then(function (next) {
+      .then(function () {
         var footer = new Buffer("\r\n--" + self.boundary + "--\r\n");
         emitter.emit('data', footer);
         emitter.emit('ready');
-        next(); // does cleanup
       });
 
       emitter.on('ready', function () {
