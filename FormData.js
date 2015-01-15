@@ -13,7 +13,7 @@
   var EventEmitter = require('events').EventEmitter
     , forEachAsync = require('foreachasync').forEachAsync
     , File = require('File')
-    , FileReader = require('FileReader')
+    , FileReader = require('filereader')
     ;
 
   function isFile(o) {
